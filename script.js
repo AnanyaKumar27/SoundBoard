@@ -10,7 +10,7 @@ let activeAudios = [];
 // Helper to get correct path
 function getAudioPath(filename) {
   // Use relative path from current HTML file
-  return `sounds/${filename}`;
+  return `${filename}`;
 }
 
 // PLAY SOUND BUTTON LOGIC
@@ -71,3 +71,4 @@ muteBtn.addEventListener("click", () => {
     activeAudios.forEach(audio => audio.volume = lastVolume);
   }
 });
+
