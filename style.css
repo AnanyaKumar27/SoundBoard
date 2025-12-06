@@ -1,0 +1,199 @@
+/*background with blur */
+body {
+  margin: 0;
+  height: 100vh;
+  background: url("bg.img.jpeg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: inherit;
+  filter: blur(5px) brightness(0.40);
+  z-index: -1;
+}
+
+.overlay {
+  width: 75%;
+  max-width: 900px;
+  padding: 50px 60px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  text-align: center;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 30px;
+  text-shadow: 0 0 15px #ffe066;
+}
+
+/* Buttons grid */
+.soundboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* Neon button */
+.sound-btn {
+  padding: 20px;
+  font-size: 22px;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(45deg, #ff8a00, #e52e71);
+  color: white;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow:
+    0 0 10px #ff6f00,
+    0 0 20px #e52e71;
+}
+
+
+/*glow */
+.sound-btn:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 20px #ffca28,
+    0 0 40px #ff6f00;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+#volume {
+  width: 250px;
+}
+
+#muteBtn {
+  padding: 12px 25px;
+  border: none;
+  font-size: 18px;
+  background: #ff4444;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 12px #ff4444;
+  transition: 0.2s ease;
+}
+
+#muteBtn:hover {
+  background: #ff2222;
+  box-shadow: 0 0 20px #ff2222;
+}
+
+/*mobile Responsive */
+@media (max-width: 768px) {
+  .overlay {
+    width: 90%;
+    padding: 35px 20px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .sound-btn {
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  #volume {
+    width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 26px;
+  }
+
+  .sound-btn {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .overlay {
+    padding: 25px 15px;
+  }
+}
+/* Prevent from overflowing on short screens */
+@media (max-height: 700px) {
+  .overlay {
+    padding: 30px 25px;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .sound-btn {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  #volume {
+    width: 150px;
+  }
+}
+
+/* Phones in landscape — tightest space */
+@media (max-height: 500px) {
+  .overlay {
+    width: 95%;
+    max-height: 90vh;
+    padding: 20px 15px;
+  }
+
+  .soundboard {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 15px;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .sound-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 350px) {
+  .soundboard {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 12px;
+  }
+
+  .overlay {
+    padding: 20px 12px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}
+
